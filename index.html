@@ -17,7 +17,42 @@
 html{
     scroll-behavior:smooth;
 }
+/* FLOATING MUSIC BUTTON */
 
+.music-button{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:52px;
+    height:52px;
+    border-radius:50%;
+    border:1px solid #d8bb7b;
+    background:#171512;
+    color:#d8bb7b;
+    font-size:20px;
+    cursor:pointer;
+    z-index:1000;
+    box-shadow:0 5px 20px rgba(0,0,0,.35);
+    transition:.3s ease;
+}
+
+.music-button:hover{
+    transform:scale(1.08);
+}
+
+.music-button.playing{
+    animation:musicRotate 3s linear infinite;
+}
+
+@keyframes musicRotate{
+    from{
+        transform:rotate(0deg);
+    }
+    to{
+        transform:rotate(360deg);
+    }
+}
+    
 body{
     background:#111;
     color:#eee;
