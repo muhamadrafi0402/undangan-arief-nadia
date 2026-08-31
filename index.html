@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Wedding of Arief & Nadia</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#111;
+    color:#eee;
+    font-family:'Montserrat',sans-serif;
+}
+
+h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+}
+
+button{
+    font-family:inherit;
+}
+
+/* OPENING */
+
+.opening{
+    position:fixed;
+    inset:0;
+    z-index:999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.8)),
+    url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1600&q=90")
+    center/cover;
+    transition:1s ease;
+}
+
+.opening.hide{
+    opacity:0;
+    pointer-events:none;
+}
+
+.opening-box{
+    padding:45px 30px;
+    width:90%;
+    max-width:520px;
+    border:1px solid #c8aa70;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+}
+
+.small-title{
+    font-size:11px;
+    letter-spacing:5px;
+    color:#d9bd82;
+}
+
+.opening h1{
+    font-size:65px;
+    font-weight:400;
+    margin:18px 0;
+}
+
+.opening-date{
+    color:#ddd;
+    letter-spacing:3px;
+    margin-bottom:30px;
+}
+
+.btn{
+    border:1px solid #d8bb7b;
+    background:#d8bb7b;
+    color:#151515;
+    padding:13px 28px;
+    cursor:pointer;
+    letter-spacing:2px;
+    font-size:11px;
+    font-weight:600;
+}
+
+/* MAIN */
+
+main{
+    display:none;
+}
+
+.hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.75)),
+    url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1600&q=90")
+    center/cover fixed;
+}
+
+.hero-content{
+    padding:30px;
+}
+
+.hero h1{
+    font-size:75px;
+    font-weight:400;
+    color:#f1d79f;
+    margin:15px 0;
+}
+
+.hero-date{
+    letter-spacing:5px;
+}
+
+/* SECTIONS */
+
+section{
+    padding:90px 20px;
+    background:#f7f2e9;
+    color:#29251f;
+    text-align:center;
+}
+
+section.dark{
+    background:#171512;
+    color:#eee;
+}
+
+.section-title{
+    font-size:45px;
+    font-weight:400;
+    color:#866b3d;
+    margin:10px 0 20px;
+}
+
+.dark .section-title{
+    color:#d8bb7b;
+}
+
+.description{
+    max-width:650px;
+    margin:auto;
+    color:#70695e;
+    line-height:1.9;
+}
+
+.dark .description{
+    color:#bbb;
+}
+
+/* COUPLE */
+
+.couple{
+    margin-top:35px;
+}
+
+.couple-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:38px;
+    color:#806437;
+    margin:8px 0;
+}
+
+.amp{
+    font-size:30px;
+    color:#b19360;
+}
+
+/* COUNTDOWN */
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:35px;
+}
+
+.time-box{
+    min-width:80px;
+    padding:16px 10px;
+    background:#fff;
+    border:1px solid #ddd1b9;
+}
+
+.time-box strong{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    color:#806437;
+}
+
+/* GALLERY */
+
+.gallery{
+    max-width:900px;
+    margin:35px auto 0;
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
+
+.gallery img{
+    width:100%;
+    height:330px;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.gallery img:hover{
+    transform:scale(1.02);
+}
+
+/* EVENTS */
+
+.events{
+    max-width:700px;
+    margin:35px auto;
+}
+
+.event{
+    background:white;
+    padding:35px;
+    margin:15px 0;
+    border:1px solid #ded4c3;
+}
+
+.event h3{
+    font-size:32px;
+    color:#806437;
+}
+
+.event p{
+    margin-top:10px;
+    line-height:1.8;
+}
+
+.map-btn{
+    display:inline-block;
+    margin-top:20px;
+    text-decoration:none;
+}
+
+/* STORY */
+
+.story{
+    max-width:650px;
+    margin:40px auto;
+    text-align:left;
+}
+
+.story-item{
+    border-left:2px solid #c8a86c;
+    padding:0 0 35px 25px;
+    margin-left:10px;
+}
+
+.story-item h3{
+    font-size:28px;
+    color:#806437;
+}
+
+/* GIFT */
+
+.gift{
+    max-width:500px;
+    margin:35px auto;
+    padding:35px;
+    background:#211e1a;
+    border:1px solid #806437;
+}
+
+.bank{
+    font-size:24px;
+    color:#d8bb7b;
+}
+
+.account{
+    font-size:20px;
+    margin:10px 0;
+}
+
+/* RSVP */
+
+form{
+    max-width:500px;
+    margin:35px auto;
+}
+
+input,select,textarea{
+    width:100%;
+    padding:14px;
+    margin:7px 0;
+    border:1px solid #ccc;
+    font-family:inherit;
+}
+
+textarea{
+    height:100px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#0c0c0c;
+    text-align:center;
+    padding:80px 20px;
+}
+
+footer h2{
+    font-size:50px;
+    color:#d8bb7b;
+    margin:15px 0;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .opening h1{
+        font-size:48px;
+    }
+
+    .hero h1{
+        font-size:52px;
+    }
+
+    .section-title{
+        font-size:38px;
+    }
+
+    .gallery{
+        grid-template-columns:1fr;
+    }
+
+    .gallery img{
+        height:380px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- OPENING -->
+
+<div class="opening" id="opening">
+
+    <div class="opening-box">
+
+        <div class="small-title">
+            THE WEDDING OF
+        </div>
+
+        <h1>Arief & Nadia</h1>
+
+        <div class="opening-date">
+            12 • 12 • 2026
+        </div>
+
+        <button class="btn" onclick="openInvitation()">
+            BUKA UNDANGAN
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<main id="main">
+
+<!-- HERO -->
+
+<div class="hero">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            WE ARE GETTING MARRIED
+        </div>
+
+        <h1>Arief & Nadia</h1>
+
+        <div class="hero-date">
+            12 DECEMBER 2026
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- INTRO -->
+
+<section>
+
+    <div class="small-title">
+        ASSALAMUALAIKUM
+    </div>
+
+    <h2 class="section-title">
+        Dengan Bahagia
+    </h2>
+
+    <p class="description">
+
+        Dengan memohon rahmat dan ridho Allah SWT,
+        kami bermaksud mengundang Bapak/Ibu/Saudara/i
+        untuk hadir dalam acara pernikahan kami.
+
+    </p>
+
+    <div class="couple">
+
+        <div class="couple-name">
+            Arief Pratama
+        </div>
+
+        <div class="amp">
+            &
+        </div>
+
+        <div class="couple-name">
+            Nadia Putri
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- COUNTDOWN -->
+
+<section class="dark">
+
+    <div class="small-title">
+        COUNTDOWN
+    </div>
+
+    <h2 class="section-title">
+        Menuju Hari Bahagia
+    </h2>
+
+    <div class="countdown">
+
+        <div class="time-box">
+            <strong id="days">0</strong>
+            Hari
+        </div>
+
+        <div class="time-box">
+            <strong id="hours">0</strong>
+            Jam
+        </div>
+
+        <div class="time-box">
+            <strong id="minutes">0</strong>
+            Menit
+        </div>
+
+        <div class="time-box">
+            <strong id="seconds">0</strong>
+            Detik
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GALLERY -->
+
+<section>
+
+    <div class="small-title">
+        OUR MOMENTS
+    </div>
+
+    <h2 class="section-title">
+        Memories
+    </h2>
+
+    <p class="description">
+        Beberapa momen yang menjadi bagian
+        dari perjalanan kisah kami.
+    </p>
+
+    <div class="gallery">
+
+        <img src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=90">
+
+        <img src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=900&q=90">
+
+    </div>
+
+</section>
+
+
+<!-- EVENT -->
+
+<section class="dark">
+
+    <div class="small-title">
+        SAVE THE DATE
+    </div>
+
+    <h2 class="section-title">
+        Wedding Event
+    </h2>
+
+    <div class="events">
+
+        <div class="event">
+
+            <h3>Akad Nikah</h3>
+
+            <p>
+                Sabtu, 12 Desember 2026<br>
+                08.00 WIB
+            </p>
+
+            <p>
+                Grand Ballroom Example Hotel<br>
+                Jakarta
+            </p>
+
+        </div>
+
+
+        <div class="event">
+
+            <h3>Resepsi</h3>
+
+            <p>
+                Sabtu, 12 Desember 2026<br>
+                11.00 – 14.00 WIB
+            </p>
+
+            <p>
+                Grand Ballroom Example Hotel<br>
+                Jakarta
+            </p>
+
+        </div>
+
+    </div>
+
+    <a
+        href="https://maps.google.com"
+        target="_blank"
+        class="btn map-btn">
+
+        LIHAT LOKASI
+
+    </a>
+
+</section>
+
+
+<!-- STORY -->
+
+<section>
+
+    <div class="small-title">
+        OUR STORY
+    </div>
+
+    <h2 class="section-title">
+        Love Story
+    </h2>
+
+    <div class="story">
+
+        <div class="story-item">
+
+            <h3>2019 — First Meet</h3>
+
+            <p>
+                Sebuah pertemuan sederhana yang
+                ternyata menjadi awal perjalanan panjang.
+            </p>
+
+        </div>
+
+
+        <div class="story-item">
+
+            <h3>2022 — We Decided</h3>
+
+            <p>
+                Setelah melewati berbagai cerita,
+                kami memilih untuk terus berjalan
+                bersama.
+            </p>
+
+        </div>
+
+
+        <div class="story-item">
+
+            <h3>2026 — The Wedding</h3>
+
+            <p>
+                Hari ketika dua perjalanan
+                menjadi satu cerita.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GIFT -->
+
+<section class="dark">
+
+    <div class="small-title">
+        WEDDING GIFT
+    </div>
+
+    <h2 class="section-title">
+        Send Your Love
+    </h2>
+
+    <div class="gift">
+
+        <p>
+            Bagi keluarga dan sahabat yang ingin
+            memberikan tanda kasih:
+        </p>
+
+        <br>
+
+        <div class="bank">
+            BCA
+        </div>
+
+        <div class="account" id="account">
+            1234567890
+        </div>
+
+        <p>
+            a.n. Arief Pratama
+        </p>
+
+        <br>
+
+        <button
+            class="btn"
+            onclick="copyAccount()">
+
+            SALIN REKENING
+
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- RSVP -->
+
+<section>
+
+    <div class="small-title">
+        RSVP
+    </div>
+
+    <h2 class="section-title">
+        Konfirmasi Kehadiran
+    </h2>
+
+    <p class="description">
+        Mohon konfirmasi kehadiran Anda
+        melalui formulir berikut.
+    </p>
+
+
+    <form onsubmit="sendRSVP(event)">
+
+        <input
+            id="guest"
+            placeholder="Nama Anda"
+            required>
+
+        <select id="attendance">
+
+            <option value="Hadir">
+                Saya akan hadir
+            </option>
+
+            <option value="Tidak hadir">
+                Saya tidak dapat hadir
+            </option>
+
+        </select>
+
+        <textarea
+            id="message"
+            placeholder="Ucapan & doa">
+        </textarea>
+
+        <button class="btn" type="submit">
+            KIRIM RSVP
+        </button>
+
+    </form>
+
+</section>
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="small-title">
+        THANK YOU
+    </div>
+
+    <h2>
+        Arief & Nadia
+    </h2>
+
+    <p>
+        Terima kasih atas doa,
+        perhatian dan kehadiran Anda.
+    </p>
+
+    <p style="margin-top:20px;color:#c8a86c">
+        12 • 12 • 2026
+    </p>
+
+</footer>
+
+</main>
+
+
+<script>
+
+/* OPEN INVITATION */
+
+function openInvitation(){
+
+    document.getElementById("opening")
+        .classList.add("hide");
+
+    document.getElementById("main")
+        .style.display="block";
+
+}
+
+
+/* COUNTDOWN */
+
+const weddingDate =
+new Date("2026-12-12T08:00:00+07:00").getTime();
+
+
+function countdown(){
+
+    const now = new Date().getTime();
+
+    const distance =
+        weddingDate - now;
+
+
+    if(distance <= 0){
+
+        document.getElementById("days")
+            .innerText="0";
+
+        document.getElementById("hours")
+            .innerText="0";
+
+        document.getElementById("minutes")
+            .innerText="0";
+
+        document.getElementById("seconds")
+            .innerText="0";
+
+        return;
+
+    }
+
+
+    const days =
+        Math.floor(distance / (1000*60*60*24));
+
+    const hours =
+        Math.floor(
+            (distance % (1000*60*60*24))
+            /(1000*60*60)
+        );
+
+    const minutes =
+        Math.floor(
+            (distance % (1000*60*60))
+            /(1000*60)
+        );
+
+    const seconds =
+        Math.floor(
+            (distance % (1000*60))
+            /1000
+        );
+
+
+    document.getElementById("days")
+        .innerText=days;
+
+    document.getElementById("hours")
+        .innerText=hours;
+
+    document.getElementById("minutes")
+        .innerText=minutes;
+
+    document.getElementById("seconds")
+        .innerText=seconds;
+
+}
+
+
+countdown();
+
+setInterval(countdown,1000);
+
+
+/* COPY BANK */
+
+function copyAccount(){
+
+    const number =
+        document.getElementById("account").innerText;
+
+    navigator.clipboard.writeText(number);
+
+    alert("Nomor rekening berhasil disalin.");
+
+}
+
+
+/* RSVP WHATSAPP */
+
+function sendRSVP(event){
+
+    event.preventDefault();
+
+    const name =
+        document.getElementById("guest").value;
+
+    const attendance =
+        document.getElementById("attendance").value;
+
+    const message =
+        document.getElementById("message").value;
+
+
+    const text =
+        `Halo Arief & Nadia,%0A%0A`+
+        `Nama: ${name}%0A`+
+        `Kehadiran: ${attendance}%0A`+
+        `Ucapan: ${message}`;
+
+
+    /*
+      GANTI NOMOR INI
+      dengan nomor WhatsApp
+      pengantin.
+    */
+
+    const phone="6281234567890";
+
+
+    window.open(
+        `https://wa.me/${phone}?text=${text}`,
+        "_blank"
+    );
+
+}
+
+</script>
+
+</body>
+</html>
